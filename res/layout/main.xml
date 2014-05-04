@@ -3,36 +3,41 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/BackgroundColor"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:screenOrientation="portrait">
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/TextViewHeight"
-        android:textSize="@dimen/ViewedTextSize"
-        android:text="@string/Empty"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
+        android:ellipsize="start"
+        android:gravity="right|center"
         android:padding="2dp"
-        android:ellipsize="start" />
+        android:text="@string/Empty"
+        android:background="@color/BackgroundColor"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/ViewedTextSize2" />
     
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/TextViewHeight"
-        android:textSize="@dimen/ViewedTextSize"
-        android:text="@string/Empty"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
+        android:ellipsize="start"
+        android:gravity="right|center"
         android:padding="2dp"
-        android:ellipsize="start" />
+        android:text="@string/Empty"
+        android:background="@color/BackgroundColor"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/ViewedTextSize" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp" >
@@ -40,11 +45,14 @@
         <Button
             android:id="@+id/button7"
             android:layout_width="@dimen/ButtonSize"
-            android:layout_height="@dimen/ButtonSize"        
-            android:textSize="@dimen/TextSize"
+            android:layout_height="@dimen/ButtonSize"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="@string/B7" />
+            android:layout_margin="@dimen/ButtonMargin"
+            android:layout_toLeftOf="@+id/button5"
+            android:background="@color/ButtonColor"
+            android:text="@string/B7"
+            android:textSize="@dimen/TextSize" />
 
         <Button
             android:id="@+id/button8"
@@ -52,7 +60,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_alignParentTop="true"
+            android:background="@color/ButtonColor"
             android:layout_toRightOf="@+id/button7"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B8" />
 
         <Button
@@ -61,7 +71,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_alignParentTop="true"
+            android:background="@color/ButtonColor"
             android:layout_toRightOf="@+id/button8"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B9" />
 
         <Button
@@ -70,7 +82,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_alignParentLeft="true"
+            android:background="@color/ButtonColor"
             android:layout_below="@+id/button7"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B4" />
 
         <Button
@@ -79,7 +93,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/button8"
+            android:background="@color/ButtonColor"
             android:layout_toRightOf="@+id/button4"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B5" />
 
         <Button
@@ -88,7 +104,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/button9"
+            android:background="@color/ButtonColor"
             android:layout_toRightOf="@+id/button5"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B6" />
 
         <Button
@@ -97,7 +115,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_alignParentLeft="true"
+            android:background="@color/ButtonColor"
             android:layout_below="@+id/button4"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B1" />
 
         <Button
@@ -106,7 +126,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/button5"
+            android:background="@color/ButtonColor"
             android:layout_toRightOf="@+id/button1"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B2" />
 
         <Button
@@ -115,7 +137,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/button6"
+            android:background="@color/ButtonColor"
             android:layout_toRightOf="@+id/button2"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B3" />
 
         <Button
@@ -124,7 +148,10 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/button2"
+            android:background="@color/ButtonColor2"
             android:layout_toRightOf="@+id/button0"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:textColor="@color/ColorText2"
             android:text="@string/Dot" />
 
         <Button
@@ -133,7 +160,9 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_alignParentLeft="true"
+            android:background="@color/ButtonColor"
             android:layout_below="@+id/button1"
+            android:layout_margin="@dimen/ButtonMargin"
             android:text="@string/B0" />
 
         <Button
@@ -142,7 +171,10 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/buttonDif"
+            android:background="@color/ButtonColor2"
             android:layout_toRightOf="@+id/buttonClear"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:textColor="@color/ColorText2"
             android:text="@string/sum" />
 
         <Button
@@ -151,7 +183,10 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/buttonMul"
+            android:background="@color/ButtonColor2"
             android:layout_toRightOf="@+id/button3"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:textColor="@color/ColorText2"
             android:text="@string/dif" />
 
         <Button
@@ -160,7 +195,10 @@
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
             android:layout_below="@+id/buttonDiv"
+            android:background="@color/ButtonColor2"
             android:layout_toRightOf="@+id/button6"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:textColor="@color/ColorText2"
             android:text="@string/mul" />
 
         <Button
@@ -168,8 +206,10 @@
             android:layout_width="@dimen/ButtonSize"
             android:layout_height="@dimen/ButtonSize"
             android:textSize="@dimen/TextSize"
-			android:layout_alignParentTop="true"
+            android:background="@color/ButtonColor2"
             android:layout_toRightOf="@+id/button9"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:textColor="@color/ColorText2"
             android:text="@string/div" />
 
         <Button
@@ -177,7 +217,10 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@+id/button0"
+            android:background="@color/ButtonColor2"
             android:text="@string/Eq"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:textColor="@color/ColorText2"
             android:textSize="@dimen/TextSize" />
 
         <Button
@@ -186,7 +229,10 @@
             android:layout_height="@dimen/ButtonSize"
             android:layout_above="@+id/buttonMul"
             android:layout_toRightOf="@+id/buttonMul"
+            android:background="@color/ButtonColor2"
             android:text="@string/exponent"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:textColor="@color/ColorText2"
             android:textSize="@dimen/TextSize" />
 
         <Button
@@ -195,7 +241,11 @@
             android:layout_height="@dimen/ButtonSize"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/buttonDiv"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:layout_toRightOf="@+id/buttonMul"
+            android:background="@color/ButtonColor2"
             android:text="@string/porcent"
+            android:textColor="@color/ColorText2"
             android:textSize="@dimen/TextSize" />
 
         <Button
@@ -204,8 +254,26 @@
             android:layout_height="@dimen/ButtonSize"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/buttonMul"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:layout_toRightOf="@+id/buttonDif"
+            android:background="@color/ButtonColor2"
             android:text="@string/ce"
+            android:textColor="@color/ColorText2"
             android:textSize="@dimen/TextSize" />
+        
+        <Button
+            android:id="@+id/buttonClear"
+            android:layout_width="@dimen/ButtonSize"
+            android:layout_height="@dimen/ButtonSize"
+            android:layout_below="@+id/button2"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:layout_toLeftOf="@+id/buttonDif"
+            android:layout_toRightOf="@+id/button2"
+            android:background="@color/ButtonColor2"
+            android:maxLines="1"
+            android:text="@string/Clear"
+            android:textColor="@color/ColorText2"
+            android:textSize="@dimen/textBotaoLimpar" />
 
         <Button
             android:id="@+id/Button04"
@@ -213,18 +281,12 @@
             android:layout_height="@dimen/ButtonSize"
             android:layout_above="@+id/buttonEq"
             android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/ButtonMargin"
+            android:layout_toRightOf="@+id/buttonSum"
+            android:background="@color/ButtonColor2"
             android:text="@string/maisoumenos"
+            android:textColor="@color/ColorText2"
             android:textSize="@dimen/TextSize" />
-
-        <Button
-            android:id="@+id/buttonClear"
-            android:layout_width="@dimen/ButtonSize"
-            android:layout_height="@dimen/ButtonSize"
-            android:layout_below="@+id/button2"
-            android:layout_toRightOf="@+id/button2"
-            android:maxLines="1"
-            android:text="@string/Clear"
-            android:textSize="@dimen/textBotaoLimpar" />
 
     </RelativeLayout>
 

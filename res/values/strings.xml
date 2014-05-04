@@ -15,8 +15,8 @@
     <string name="B0">0</string>
     <string name="Dot">.</string>
     <string name="Eq">=</string>
-    <string name="Clear">C</string>
-    <string name="ce">CE</string>
+    <string name="Clear">"C"</string>
+    <string name="ce">"CE"</string>
     <string name="sum">+</string>
     <string name="dif">-</string>
     <string name="mul">x</string>
@@ -25,17 +25,18 @@
     <string name="exponent">^</string>
     <string name="maisoumenos">+/-</string>	
     <string name="Empty">0</string>
-    <dimen name="ButtonSize">63dp</dimen>
-    <dimen name="ButtonSizeLand">76dp</dimen>
+    <dimen name="ButtonSize">60dp</dimen>
     
     <dimen name="TextSize">30dp</dimen>
-    <dimen name="TextSizeLand">30dp</dimen>
     <dimen name="textBotaoLimpar">20dp</dimen>
     <dimen name="TextSizeClearButtonLand" >20dp</dimen>
-    <dimen name="ViewedTextSize">45dp</dimen>
+    <dimen name="ViewedTextSize">55dp</dimen>
+	<dimen name="ViewedTextSize2">30dp</dimen>
     <dimen name="TextViewHeight">65dp</dimen>
-    <dimen name="ButtonMargin">2dp</dimen>
+    <dimen name="ButtonMargin">1dp</dimen>
     
-    <color name="BackgroundColor">#8B8B83</color>
-    <color name="ButtonColor">#CDCDC1</color>
+    <color name="BackgroundColor">#7f8c8d</color>
+    <color name="ButtonColor">#bdc3c7</color>
+    <color name="ButtonColor2">#34495e</color>
+    <color name="ColorText2">#ecf0f1</color>
 </resources>
