@@ -1,14 +1,16 @@
 package br.com.luizpicolo.calculator;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.lang.Math;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 import com.calculator.myCalculator.R;
 
@@ -20,8 +22,8 @@ public class Calculadora extends Activity {
 	final int MaxViewableNumber = 9999999;
 	Button B1, B2, B3, B4, B5, B6, B7, B8, B9, B0, BSoma, BDiferenca,
 			BMultiplicacao, BDivisao, BLimpar, BPonto, BEquacoes, Bexponent,
-			BPorcentagem, BtrocaValor;
-	TextView Resultado;
+			BPorcentagem, BtrocaValor, Bce;
+	TextView Resultado, Equacoes;
 	double num1 = -1, num2 = -1, result = 0;
 	char op = ' ';
 	int BotaoPressionado;
@@ -44,7 +46,6 @@ public class Calculadora extends Activity {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
 				NumeroPrecionado(1);
-
 			}
 		};
 
@@ -159,15 +160,37 @@ public class Calculadora extends Activity {
 			}
 		};
 		
+		OnClickListener myListenerBce = new OnClickListener() {
+			public void onClick(View v) {
+				mVibracao.vibrate(duracaoDaVibracao);
+				String numero = String.valueOf(Equacoes.getText());
+					if (numero.length() > 1){
+					String novo_numero = numero.substring(0, numero.length()-1); 
+					Equacoes.setText(novo_numero);  
+				} else {
+					LimparTodos();
+				}
+			}
+		};
+		
 		OnClickListener myListenerBtrocaValor = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				double valor = num1 * -1;
-				Resultado.setText("");
-				Resultado.append(String.valueOf(valor));
+				
+				Equacoes.setText("");
+				if(num1 % 1 == 0){ 
+					int valor = (int)num1 * -1;
+					Equacoes.setText(String.valueOf(valor));
+				}else{ 
+					double valor = num1 * -1;
+					DecimalFormat df = new DecimalFormat("###.##");
+					Equacoes.setText(String.valueOf(df.format(valor)));
+				} 
+				
+				
 			}
 		};
-
+		
 		OnClickListener myListenerBDot = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
@@ -175,20 +198,20 @@ public class Calculadora extends Activity {
 					num1 = 0;
 				} else if (num2 == -1 && op != ' ') {
 					num2 = 0;
-					Resultado.append("0");
+					Equacoes.append("0");
 				}
 
 				if (erroDeSintaxe) {
-					Resultado.setText("0.");
+					Equacoes.setText("0.");
 				} else if (!pontoPressionado) {
-					Resultado.append(".");
+					Equacoes.append(".");
 				}
 
 				if (num1 == 0
 						&& num2 == -1
 						&& op == ' '
-						&& Float.parseFloat(Resultado.getText().toString()) != 0) {
-					Resultado.setText("0");
+						&& Float.parseFloat(Equacoes.getText().toString()) != 0) {
+					Equacoes.setText("0");
 				}
 
 				erroDeSintaxe = false;
@@ -277,6 +300,7 @@ public class Calculadora extends Activity {
 		Bexponent.setOnClickListener(myListenerBExponente);
 		BPorcentagem.setOnClickListener(myListenerBPorcentagem);
 		BtrocaValor.setOnClickListener(myListenerBtrocaValor);
+		Bce.setOnClickListener(myListenerBce);
 		
 		BLimpar.setOnClickListener(myListenerBClear);
 		BEquacoes.setOnClickListener(myListenerBEqual);
@@ -325,12 +349,14 @@ public class Calculadora extends Activity {
 		BDivisao = (Button) findViewById(R.id.buttonDiv);
 		Bexponent = (Button) findViewById(R.id.Button01);
 		BPorcentagem = (Button) findViewById(R.id.Button02);
+		Bce = (Button) findViewById(R.id.Button03);
 		BtrocaValor = (Button) findViewById(R.id.Button04);
 
 		BLimpar = (Button) findViewById(R.id.buttonClear);
 		BPonto = (Button) findViewById(R.id.buttonDot);
 		BEquacoes = (Button) findViewById(R.id.buttonEq);
 		Resultado = (TextView) findViewById(R.id.textView1);
+		Equacoes = (TextView) findViewById(R.id.textView2);
 	}
 
 	private void MostrarResultado() {
@@ -352,15 +378,16 @@ public class Calculadora extends Activity {
 					Double.toString(result).indexOf("E"),
 					Double.toString(result).length()));
 		}
+		Equacoes.setText("0");
 	}
 	
 	private void NumeroPrecionado(int buttonPressed) {
 		if (num1 == -1) {
 			num1 = buttonPressed;
-			Resultado.setText(Integer.toString(buttonPressed));
+			Equacoes.setText(Integer.toString(buttonPressed));
 		} else if (num2 == -1 && !pontoPressionado && op != ' ') {
 			num2 = buttonPressed;
-			Resultado.append(Integer.toString(buttonPressed));
+			Equacoes.append(Integer.toString(buttonPressed));
 		} else if (op == ' ') {
 			if (pontoPressionado) {
 				countDecDigits--;
@@ -369,7 +396,7 @@ public class Calculadora extends Activity {
 			} else {
 				num1 = num1 * 10 + buttonPressed;
 			}
-			Resultado.append(Integer.toString(buttonPressed));
+			Equacoes.append(Integer.toString(buttonPressed));
 		} else if (op != ' ') {
 			if (pontoPressionado) {
 				countDecDigits--;
@@ -378,40 +405,40 @@ public class Calculadora extends Activity {
 			} else {
 				num2 = num2 * 10 + buttonPressed;
 			}
-			Resultado.append(Integer.toString(buttonPressed));
+			Equacoes.append(Integer.toString(buttonPressed));
 		}
 	}
 
 	private void ChangeOp(String newOp) {
 		if (op != ' ' && semMaisNumeros && num2 == -1) {
 			op = newOp.charAt(0);
-			Resultado.setText(Resultado.getText().toString()
-					.substring(0, Resultado.getText().toString().length() - 1));
-			Resultado.append(newOp);
+			Equacoes.setText(Equacoes.getText().toString()
+					.substring(0, Equacoes.getText().toString().length() - 1));
+			Equacoes.append(newOp);
 		}
 	}
 
 	private void OperadorPrecionado(String insertedOp) {
 		while (!semMaisNumeros) {
-			if (Resultado
+			if (Equacoes
 					.getText()
 					.toString()
 					.equals(Double.toString(Math.round(result * 1000.0) / 1000.0))) {
 				num1 = result;
-			} else if (Resultado.getText().toString()
+			} else if (Equacoes.getText().toString()
 					.equals(Integer.toString((int) result))) {
 				num1 = result;
 			}
 
 			if (num1 == -1)
 				num1 = 0;
-			if (Resultado.getText().toString()
-					.charAt(Resultado.getText().length() - 1) == '.')
-				Resultado.append("0");
+			if (Equacoes.getText().toString()
+					.charAt(Equacoes.getText().length() - 1) == '.')
+				Equacoes.append("0");
 
 			pontoPressionado = false;
 			countDecDigits = 0;
-			Resultado.append(insertedOp);
+			Equacoes.append(insertedOp);
 			op = insertedOp.charAt(0);
 			semMaisNumeros = true;
 		}
@@ -426,5 +453,6 @@ public class Calculadora extends Activity {
 		semMaisNumeros = false;
 		countDecDigits = 0;
 		Resultado.setText("0");
+		Equacoes.setText("0");
 	}
 }

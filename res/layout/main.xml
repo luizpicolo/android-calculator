@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/BackgroundColor"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/TextViewHeight"
+        android:textSize="@dimen/ViewedTextSize"
+        android:text="@string/Empty"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:padding="2dp"
+        android:ellipsize="start" />
+    
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/TextViewHeight"
         android:textSize="@dimen/ViewedTextSize"
@@ -163,7 +175,7 @@
         <Button
             android:id="@+id/buttonEq"
             android:layout_width="fill_parent"
-            android:layout_height="80dp"
+            android:layout_height="fill_parent"
             android:layout_below="@+id/button0"
             android:text="@string/Eq"
             android:textSize="@dimen/TextSize" />
