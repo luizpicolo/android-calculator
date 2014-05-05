@@ -227,11 +227,12 @@
             android:id="@+id/Button01"
             android:layout_width="@dimen/ButtonSize"
             android:layout_height="@dimen/ButtonSize"
+            android:layout_alignParentRight="true"
             android:layout_above="@+id/buttonMul"
+            android:layout_margin="@dimen/ButtonMargin"
             android:layout_toRightOf="@+id/buttonMul"
             android:background="@color/ButtonColor2"
             android:text="@string/exponent"
-            android:layout_margin="@dimen/ButtonMargin"
             android:textColor="@color/ColorText2"
             android:textSize="@dimen/TextSize" />
 
