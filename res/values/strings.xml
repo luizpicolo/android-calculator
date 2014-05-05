@@ -25,13 +25,18 @@
     <string name="exponent">^</string>
     <string name="maisoumenos">+/-</string>	
     <string name="Empty">0</string>
+    <string name="vazio">""</string>
     <dimen name="ButtonSize">60dp</dimen>
+    <dimen name="ButtonSizeLand">43dp</dimen>
     
     <dimen name="TextSize">30dp</dimen>
+    <dimen name="TextSize_land">30dp</dimen>
     <dimen name="textBotaoLimpar">20dp</dimen>
     <dimen name="TextSizeClearButtonLand" >20dp</dimen>
     <dimen name="ViewedTextSize">55dp</dimen>
+    <dimen name="ViewedTextSizeland">30dp</dimen>
 	<dimen name="ViewedTextSize2">30dp</dimen>
+	<dimen name="ViewedTextSize2land">30dp</dimen>
     <dimen name="TextViewHeight">65dp</dimen>
     <dimen name="ButtonMargin">1dp</dimen>
     
