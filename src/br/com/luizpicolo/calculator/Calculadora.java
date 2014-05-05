@@ -1,6 +1,5 @@
 package br.com.luizpicolo.calculator;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,10 +18,8 @@ import android.os.Vibrator;
 
 public class Calculadora extends Activity {
 
-	final int MaxViewableNumber = 9999999;
-	Button B1, B2, B3, B4, B5, B6, B7, B8, B9, B0, BSoma, BDiferenca,
-			BMultiplicacao, BDivisao, BLimpar, BPonto, BEquacoes, Bexponent,
-			BPorcentagem, BtrocaValor, Bce;
+	final int NumeroMaximoVisivel = 9999999;
+	Button B1, B2, B3, B4, B5, B6, B7, B8, B9, B0, BSoma, BDiferenca, BMultiplicacao, BDivisao, BLimpar, BPonto, BEquacoes, Bexponent, BPorcentagem, BtrocaValor, Bce;
 	TextView Resultado, Equacoes;
 	double num1 = -1, num2 = -1, result = 0;
 	char op = ' ';
@@ -42,80 +39,84 @@ public class Calculadora extends Activity {
 		final Vibrator mVibracao = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 		final int duracaoDaVibracao = 33;
 
+		/**	
+		 * OUvinte para o retorno do numero clicado e das equações
+		 * a serem utilizadas na calculadora
+		 */
 		OnClickListener myListenerB1 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(1);
+				NumeroPressionado(1);
 			}
 		};
 
 		OnClickListener myListenerB2 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(2);
+				NumeroPressionado(2);
 			}
 		};
 
 		OnClickListener myListenerB3 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(3);
+				NumeroPressionado(3);
 			}
 		};
 
 		OnClickListener myListenerB4 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(4);
+				NumeroPressionado(4);
 			}
 		};
 
 		OnClickListener myListenerB5 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(5);
+				NumeroPressionado(5);
 			}
 		};
 
 		OnClickListener myListenerB6 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(6);
+				NumeroPressionado(6);
 			}
 		};
 
 		OnClickListener myListenerB7 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(7);
+				NumeroPressionado(7);
 			}
 		};
 
 		OnClickListener myListenerB8 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(8);
+				NumeroPressionado(8);
 			}
 		};
 
 		OnClickListener myListenerB9 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(9);
+				NumeroPressionado(9);
 			}
 		};
 
 		OnClickListener myListenerB0 = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				NumeroPrecionado(0);
+				NumeroPressionado(0);
 			}
 		};
 
 		OnClickListener myListenerBSum = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				ChangeOp("+");
+				TrocarOperacao("+");
 				OperadorPrecionado("+");
 			}
 		};
@@ -123,7 +124,7 @@ public class Calculadora extends Activity {
 		OnClickListener myListenerBDif = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				ChangeOp("-");
+				TrocarOperacao("-");
 				OperadorPrecionado("-");
 			}
 		};
@@ -131,7 +132,7 @@ public class Calculadora extends Activity {
 		OnClickListener myListenerBMul = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				ChangeOp("*");
+				TrocarOperacao("*");
 				OperadorPrecionado("*");
 			}
 		};
@@ -139,7 +140,7 @@ public class Calculadora extends Activity {
 		OnClickListener myListenerBDiv = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				ChangeOp("/");
+				TrocarOperacao("/");
 				OperadorPrecionado("/");
 			}
 		};
@@ -147,7 +148,7 @@ public class Calculadora extends Activity {
 		OnClickListener myListenerBExponente = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				ChangeOp("^");
+				TrocarOperacao("^");
 				OperadorPrecionado("^");
 			}
 		};
@@ -155,11 +156,14 @@ public class Calculadora extends Activity {
 		OnClickListener myListenerBPorcentagem = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
-				ChangeOp("%");
+				TrocarOperacao("%");
 				OperadorPrecionado("%");
 			}
 		};
 		
+		/**
+		 * Ouvinte para Limpeza individuais de numeros
+		 */
 		OnClickListener myListenerBce = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
@@ -173,6 +177,10 @@ public class Calculadora extends Activity {
 			}
 		};
 		
+		/**
+		 * Ouvinte para mudança.
+		 * Número negativos para positivo ou ao contrário.
+		 */
 		OnClickListener myListenerBtrocaValor = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
@@ -219,6 +227,7 @@ public class Calculadora extends Activity {
 			}
 		};
 
+		// Ouvinte para a limpeza de todos os numeros e equaçoes
 		OnClickListener myListenerBClear = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
@@ -226,6 +235,7 @@ public class Calculadora extends Activity {
 			}
 		};
 
+		// Ouvinte para o retorno das equações
 		OnClickListener myListenerBEqual = new OnClickListener() {
 			public void onClick(View v) {
 				mVibracao.vibrate(duracaoDaVibracao);
@@ -268,6 +278,8 @@ public class Calculadora extends Activity {
 							.charAt(Resultado.getText().toString().length() - 1);
 					if (c == '+' || c == '-' || c == '*' || c == '/') {
 						wrongOp = true;
+						
+						// Caso a equação não possua 2 numeros sera apresentado um erro
 						Resultado.setText("Erro de Sintaxe.");
 						erroDeSintaxe = true;
 					}
@@ -367,12 +379,12 @@ public class Calculadora extends Activity {
 		else
 			Resultado
 					.setText(Double.toString(Math.round(result * 1000.0) / 1000.0));
-		if (result > MaxViewableNumber) {
+		if (result > NumeroMaximoVisivel) {
 			Resultado.setText(Double.toString(result).subSequence(0, 3));
 			Resultado.append(Double.toString(result).subSequence(
 					Double.toString(result).indexOf("E"),
 					Double.toString(result).length()));
-		} else if (result < -MaxViewableNumber) {
+		} else if (result < -NumeroMaximoVisivel) {
 			Resultado.setText(Double.toString(result).subSequence(0, 4));
 			Resultado.append(Double.toString(result).subSequence(
 					Double.toString(result).indexOf("E"),
@@ -381,7 +393,7 @@ public class Calculadora extends Activity {
 		Equacoes.setText("0");
 	}
 	
-	private void NumeroPrecionado(int buttonPressed) {
+	private void NumeroPressionado(int buttonPressed) {
 		if (num1 == -1) {
 			num1 = buttonPressed;
 			Equacoes.setText(Integer.toString(buttonPressed));
@@ -409,7 +421,7 @@ public class Calculadora extends Activity {
 		}
 	}
 
-	private void ChangeOp(String newOp) {
+	private void TrocarOperacao(String newOp) {
 		if (op != ' ' && semMaisNumeros && num2 == -1) {
 			op = newOp.charAt(0);
 			Equacoes.setText(Equacoes.getText().toString()
