@@ -26,8 +26,8 @@
     <string name="maisoumenos">+/-</string>	
     <string name="Empty">0</string>
     <string name="vazio">""</string>
-    <dimen name="ButtonSize">60dp</dimen>
-    <dimen name="ButtonSizeLand">43dp</dimen>
+    <dimen name="ButtonSize">57dp</dimen>
+    <dimen name="ButtonSizeLand">39dp</dimen>
     
     <dimen name="TextSize">30dp</dimen>
     <dimen name="TextSize_land">30dp</dimen>
